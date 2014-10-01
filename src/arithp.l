@@ -12,7 +12,6 @@
       (bind-values (cdr bindings)
 		   (subst new old exp)))))
 
-;; SOMETHING IS WRONG WITH THIS ;;
 (defun simplify (exp)
   (if (and (listp exp) exp)
     (let* ((operator            (car exp))
