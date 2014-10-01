@@ -7,22 +7,22 @@
   (if (null bindings)
     exp
     (let* ((current-bindings (car bindings))
-	   (old              (first  current-bindings))
-	   (new              (second current-bindings)))
+           (old              (first  current-bindings))
+           (new              (second current-bindings)))
       (bind-values (cdr bindings)
-		   (subst new old exp)))))
+                   (subst new old exp)))))
 
 (defun simplify (exp)
   (if (and (listp exp) exp)
     (let* ((operator            (car exp))
-	   (operands            (cdr exp))
-	   (simplified-operands (mapcar #'simplify operands))
-	   (simplified-exp      (cons operator simplified-operands))
-	   (simplifier          (case operator
-				  ('+ #'simplify-add)
-				  ('-  #'simplify-sub)
-				  ('* #'simplify-mul)
-				  ('/ #'simplify-div))))
+           (operands            (cdr exp))
+           (simplified-operands (mapcar #'simplify operands))
+           (simplified-exp      (cons operator simplified-operands))
+           (simplifier          (case operator
+                                  ('+ #'simplify-add)
+                                  ('-  #'simplify-sub)
+                                  ('* #'simplify-mul)
+                                  ('/ #'simplify-div))))
       (funcall simplifier simplified-exp))
     exp))
 
@@ -76,8 +76,8 @@
      ((numbers?   operands) (eval exp))
      ((singleton? operands) (cons '- operands))
      ((doubleton? operands) (if (apply #'eql operands)
-			      0
-			      exp))
+                              0
+                              exp))
      (T                     exp))))
 
 (defun simplify-mul (exp)
