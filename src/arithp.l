@@ -28,14 +28,14 @@
 
 
 ;; Expression builder functions
-(defun addexp (e1 e2)
-  (list '+ e1 e2))
-(defun subexp (e1 e2)
-  (list '- e1 e2))
-(defun mulexp (e1 e2)
-  (list '* e1 e2))
-(defun divexp (e1 e2)
-  (list '/ e1 e2))
+(defun addexp (a b)
+  (list '+ a b))
+(defun subexp (a b)
+  (list '- a b))
+(defun mulexp (a b)
+  (list '* a b))
+(defun divexp (a b)
+  (list '/ a b))
 
 ;; Predicates
 (defun zero? (x)
